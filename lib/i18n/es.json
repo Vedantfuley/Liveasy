@@ -1,0 +1,17 @@
+{
+    "Select": "Seleccione su idioma",
+    "chng": "Puedes cambiar el idioma\nen cualquier momento.",
+    "next": "contiguo",
+    "mob": "Por favor, introduzca su número de móvil",
+    "no" : "Número de teléfono móvil",
+    "4dig" : "Recibirá un código de 4 dígitos para\nverificar a continuación.",
+    "cont" : "contiguo",
+    "vef" : "Verificar teléfono",
+    "Code" : "El código se envía a ",
+    "did" : "¿No recibiste el código?",
+    "vc" : "VERIFICAR Y CONTINUAR",
+    "req" : " Solicitar de nuevo.",
+    "ship" : "Expedidor",
+    "tran" : "Transportador",
+    "prof" : "Por favor seleccione su perfil"
+  }

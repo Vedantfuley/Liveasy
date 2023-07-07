@@ -1,0 +1,17 @@
+{
+  "Select": "Please select your Language",
+  "chng": "You can change the language\nat any time.",
+  "next": "NEXT",
+  "mob": "Please enter your mobile number",
+  "no" : "Mobile Number",
+  "4dig" : "You'll receive a 4 digit code\nto verify next.",
+  "cont" : "CONTINUE",
+  "vef" : "Verify Phone",
+  "Code" : "Code is sent to ",
+  "did" : "Didn't receive the code?",
+  "vc" : "VERIFY AND CONTINUE",
+  "req" :" Request Again.",
+  "ship" : "Shipper",
+  "tran" : "Transporter",
+  "prof" : "Please select your profile"
+  }
