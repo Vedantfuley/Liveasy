@@ -24,32 +24,6 @@ class _Scene2State extends State<Scene2> {
 
   TextEditingController countryController = TextEditingController();
   var phone="";
-  Future registerUser(String mobile, BuildContext context) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-
-    auth.verifyPhoneNumber(
-        phoneNumber: mobile,
-        timeout: Duration(seconds: 60),
-        verificationCompleted: (AuthCredential authCredential) {
-          auth
-              .signInWithCredential(authCredential)
-              .then((UserCredential result) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => Verify()));
-          }).catchError((e) {
-            print(e);
-          });
-        },
-        verificationFailed: (FirebaseAuthException authException) {
-          print(authException.message);
-        },
-        codeSent: (String verificationId, int? forceResendingToken) {},
-        codeAutoRetrievalTimeout: (String verificationId) {
-          verificationId = verificationId;
-          print(verificationId);
-          print("Timout");
-        });
-  }
   @override
   void initState() {
     // TODO: implement initState
@@ -183,9 +157,6 @@ class _Scene2State extends State<Scene2> {
                       color:  Color(0xffffffff),
                     ),),
                   onPressed: () async {
-                    final mobile = "+91${countryController.text.trim()}";
-                    registerUser(mobile, context);
-                    await SmsAutoFill().listenForCode();
                     await FirebaseAuth.instance.verifyPhoneNumber(
                       phoneNumber: '${countryController.text + phone}',
                       verificationCompleted: (PhoneAuthCredential credential) {},
@@ -196,7 +167,6 @@ class _Scene2State extends State<Scene2> {
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
-
                   },
                 ),
               ),
