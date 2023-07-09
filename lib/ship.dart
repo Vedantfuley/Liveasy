@@ -130,7 +130,7 @@ class _ShipState extends State<Ship> {
             SizedBox(height: 50,),
             Container(
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(height: 50,width: 370),
+                constraints: BoxConstraints.tightFor(height: 50*fem, width: 320*fem),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 0,

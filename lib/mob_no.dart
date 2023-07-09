@@ -10,20 +10,15 @@ import 'dart:ffi';
 import 'language_manager.dart';
 
 class Scene2 extends StatefulWidget {
-
-
   static String verify = "";
-
 
   @override
   State<Scene2> createState() => _Scene2State();
-
 }
 
 class _Scene2State extends State<Scene2> {
-
   TextEditingController countryController = TextEditingController();
-  var phone="";
+  var phone = "";
   @override
   void initState() {
     // TODO: implement initState
@@ -31,21 +26,24 @@ class _Scene2State extends State<Scene2> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
 
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: Icon(Icons.close,color: Colors.black,),
+          icon: Icon(
+            Icons.close,
+            color: Colors.black,
+          ),
           onPressed: () {
-           Navigator.popUntil(context, (route) => route.isFirst);
+            Navigator.popUntil(context, (route) => route.isFirst);
           },
         ),
       ),
@@ -55,36 +53,34 @@ class _Scene2State extends State<Scene2> {
           children: [
             Container(
               // pleaseenteryourmobilenumberds3 (4:38)
-              margin:  EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
+              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 7 * fem),
               padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child:
-              Text(
+              child: Text(
                 LanguageManager.instance.getTranslatedValue('mob'),
-                style:  GoogleFonts.roboto (
-                  fontSize:  20*ffem,
-                  fontWeight:  FontWeight.w700,
-                  height:  1.1725*ffem/fem,
-                  letterSpacing:  0.0703846142*fem,
-                  color:  Color(0xff000000),
+                style: GoogleFonts.roboto(
+                  fontSize: 20 * ffem,
+                  fontWeight: FontWeight.w700,
+                  height: 1.1725 * ffem / fem,
+                  letterSpacing: 0.0703846142 * fem,
+                  color: Color(0xff000000),
                 ),
               ),
             ),
             Container(
               // youllreceivea4digitcodetoverif (4:39)
-              margin:  EdgeInsets.fromLTRB(1*fem, 0*fem, 0*fem, 31*fem),
-              constraints:  BoxConstraints (
-                maxWidth:  171*fem,
+              margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 31 * fem),
+              constraints: BoxConstraints(
+                maxWidth: 171 * fem,
               ),
-              child:
-              Text(
+              child: Text(
                 LanguageManager.instance.getTranslatedValue('4dig'),
-                textAlign:  TextAlign.center,
-                style:  GoogleFonts.roboto (
-                  fontSize:  14*ffem,
-                  fontWeight:  FontWeight.w400,
-                  height:  1.1725*ffem/fem,
-                  letterSpacing:  0.0703846142*fem,
-                  color:  Color(0xff6a6c7b),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                  fontSize: 14 * ffem,
+                  fontWeight: FontWeight.w400,
+                  height: 1.1725 * ffem / fem,
+                  letterSpacing: 0.0703846142 * fem,
+                  color: Color(0xff6a6c7b),
                 ),
               ),
             ),
@@ -99,8 +95,10 @@ class _Scene2State extends State<Scene2> {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Image(image: AssetImage('assets/india-2.png'),
-                    width: 30,),
+                    child: Image(
+                      image: AssetImage('assets/india-2.png'),
+                      width: 30,
+                    ),
                   ),
                   SizedBox(
                     width: 10,
@@ -124,22 +122,25 @@ class _Scene2State extends State<Scene2> {
                   ),
                   Expanded(
                       child: TextField(
-                        onChanged: (value) {
-                          phone=value;
-                        },
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: LanguageManager.instance.getTranslatedValue('no'),
-                        ),
-                      ))
+                    onChanged: (value) {
+                      phone = value;
+                    },
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText:
+                          LanguageManager.instance.getTranslatedValue('no'),
+                    ),
+                  ))
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(height: 50,width: 370),
+                constraints: BoxConstraints.tightFor(height: 50*fem, width: 320*fem),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
@@ -148,21 +149,24 @@ class _Scene2State extends State<Scene2> {
                     ),
                     backgroundColor: Color(0xff2e3b62),
                   ),
-                  child: Text( LanguageManager.instance.getTranslatedValue('cont'),
+                  child: Text(
+                    LanguageManager.instance.getTranslatedValue('cont'),
                     style: GoogleFonts.montserrat(
-                      fontSize:  16*ffem,
-                      fontWeight:  FontWeight.w700,
-                      height:  1.2175,
-                      letterSpacing:  0.48*fem,
-                      color:  Color(0xffffffff),
-                    ),),
+                      fontSize: 16 * ffem,
+                      fontWeight: FontWeight.w700,
+                      height: 1.2175,
+                      letterSpacing: 0.48 * fem,
+                      color: Color(0xffffffff),
+                    ),
+                  ),
                   onPressed: () async {
                     await FirebaseAuth.instance.verifyPhoneNumber(
                       phoneNumber: '${countryController.text + phone}',
-                      verificationCompleted: (PhoneAuthCredential credential) {},
+                      verificationCompleted:
+                          (PhoneAuthCredential credential) {},
                       verificationFailed: (FirebaseAuthException e) {},
                       codeSent: (String verificationId, int? resendToken) {
-                        Scene2.verify=verificationId;
+                        Scene2.verify = verificationId;
                         Navigator.pushNamed(context, 'Verify');
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
@@ -171,18 +175,19 @@ class _Scene2State extends State<Scene2> {
                 ),
               ),
             ),
-            SizedBox(height: 190*fem,),
+            SizedBox(
+              height: 190 * fem,
+            ),
             Container(
-              padding:  EdgeInsets.fromLTRB(0*fem, 20*fem, 0*fem, 0*fem),
-              width:  double.infinity,
-              decoration:  BoxDecoration (
-                image:  DecorationImage (
-                  fit:  BoxFit.fill,
-                  image:  AssetImage ("assets/vector-Tzy.png"),
+              padding: EdgeInsets.fromLTRB(0 * fem, 20 * fem, 0 * fem, 0 * fem),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage("assets/vector-Tzy.png"),
                 ),
               ),
-              child:
-              Image.asset(
+              child: Image.asset(
                 "assets/vector-J7s.png",
               ),
             ),
@@ -192,3 +197,5 @@ class _Scene2State extends State<Scene2> {
     ));
   }
 }
+
+
